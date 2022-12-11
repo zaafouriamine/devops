@@ -62,7 +62,7 @@ pipeline {
         sh 'docker push ${dockerhubusername}/exam'
 
       }
-    }  /*      
+    }        
     stage('Docker Compose') {
       		steps {
          		sh 'docker-compose up -d'
@@ -75,7 +75,7 @@ pipeline {
          sh 'echo "*********Junit / Mockito Test is processing .... *********"'
         sh 'mvn  test'
       }
-    }*/
+    }
 
 
   }
