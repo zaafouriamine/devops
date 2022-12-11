@@ -34,7 +34,7 @@ pipeline {
                 sh 'echo "*********Artifact construction is processing ....*********"'
                 sh 'mvn -DskipTests package'
             }
-        }/*
+        }
     stage("NEXUS") {
 			steps {
 				sh 'mvn clean deploy -DskipTests'
@@ -62,7 +62,7 @@ pipeline {
         sh 'docker push ${dockerhubusername}/exam'
 
       }
-    }        
+    }  /*      
     stage('Docker Compose') {
       		steps {
          		sh 'docker-compose up -d'
