@@ -10,14 +10,12 @@ pipeline {
 
     stage('Cleaning ') {
       steps {
-         sh '''echo "*********Clean the Project is processing ....*********
-		mvn clean'''
+		sh 'mvn clean'
       }
     }
     stage ('compilation') {
             steps {
-                sh '''echo "*********compilation ....*********"
-			mvn -DskipTests compile'''
+			sh 'mvn -DskipTests compile'
             }
         }
     stage("SonarQube ") {
