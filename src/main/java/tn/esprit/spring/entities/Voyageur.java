@@ -8,9 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
-@Entity 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Voyageur implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -18,39 +26,10 @@ public class Voyageur implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVoyageur;
 	
-	String nomVoyageur;
-
+	private String nomVoyageur;
 	
-	public List<Voyage> getMesvoyages() {
-		return mesvoyages;
-	}
-
-	public void setMesvoyages(List<Voyage> mesvoyages) {
-		this.mesvoyages = mesvoyages;
-	}
-
 	@ManyToMany(mappedBy = "mesVoyageurs")
-    public List<Voyage> mesvoyages;
-
-	public Long getIdVoyageur() {
-		return idVoyageur;
-	}
-
-	public void setIdVoyageur(Long idVoyageur) {
-		this.idVoyageur = idVoyageur;
-	}
-
-	public String getNomVoyageur() {
-		return nomVoyageur;
-	}
-
-	public void setNomVoyageur(String nomVoyageur) {
-		this.nomVoyageur = nomVoyageur;
-	}
-
-	public Voyageur() {
-		super();
-	}
+    private List<Voyage> mesvoyages;
 	
 	
 }
