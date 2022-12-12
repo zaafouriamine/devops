@@ -8,16 +8,16 @@ pipeline {
   stages {
   
 
-    stage('Cleaning the Project') {
+    stage('Cleaning ') {
       steps {
-         sh 'echo "*********Clean the Project is processing ....*********"'
-        sh 'mvn clean'
+         sh '''echo "*********Clean the Project is processing ....*********
+		mvn clean'''
       }
     }
-    stage ('project compilation') {
+    stage ('compilation') {
             steps {
-                sh 'echo "*********Compiling ....*********"'
-                sh 'mvn -DskipTests compile'
+                sh '''echo "*********compilation ....*********"
+			mvn -DskipTests compile'''
             }
         }
     stage("SonarQube ") {
@@ -29,9 +29,8 @@ pipeline {
             }
     }
     
-    stage ('Artifact construction') {
+    stage ('Construction de livrable') {
             steps {
-                sh 'echo "*********Artifact construction is processing ....*********"'
                 sh 'mvn -DskipTests package'
             }
         }
@@ -44,7 +43,6 @@ pipeline {
 
     stage('Docker build ') {
       steps {
-         sh 'echo "*********Docker build image is processing ....*********"'
         sh 'docker build -t ${dockerhubusername}/app .'
       }
     }
